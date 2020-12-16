@@ -5,7 +5,7 @@ var fs = require("fs")
 
 
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3001;
 
 app.use('/assets', express.static('assets'))
 
