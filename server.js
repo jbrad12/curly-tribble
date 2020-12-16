@@ -7,7 +7,8 @@ var fs = require("fs")
 var app = express();
 var PORT = process.env.PORT || 3001;
 
-// app.use('/public', express.static('public'))
+app.use(express.static(path.join(__dirname,"public")));
+
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +20,7 @@ app.get("/notes", function(req, res) {
 
 app.get("/api/notes", function(req, res) {
     // return res.json(__dirname, "notes.html");
-    res.sendFile(path.join(__dirname, "/db/db.json"));
+    res.sendFile(path.join(__dirname, "db/db.json"));
  
   });
 
@@ -28,14 +29,14 @@ app.post("/api/notes", function(req, res) {
     // console.log(req.body)
     // JSON.parse(fs.readFileSync("../db/db.json", "utf8")).push(req.body)
 
-    fs.readFile('/db/db.json', (err, data) => {
+    fs.readFile('db/db.json', (err, data) => {
         console.log(data)
         if (err) throw err;
         dbData = JSON.parse(data);
         dbData.push(req.body)
         
       
-    fs.writeFile('/db/db.json', JSON.stringify(dbData), (err, data) => {
+    fs.writeFile('db/db.json', JSON.stringify(dbData), (err, data) => {
         if (err) throw err;
       });
 
