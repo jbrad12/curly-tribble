@@ -5,7 +5,7 @@
 Using an express server, creates an app that adds, stores amd deletes, user inputed notes.
 
 
-## Table of Contents (Optional)
+## Table of Contents
 
 
 * [Installation](#installation)
